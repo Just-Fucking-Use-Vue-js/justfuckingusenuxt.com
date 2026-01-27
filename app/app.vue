@@ -9,11 +9,32 @@ useSeoMeta({
   twitterImage: 'https://justfuckingusenuxt.com/og/index.png',
   twitterCard: 'summary_large_image',
 })
+
+const { isLoading } = useLoadingIndicator()
+
+const appear = ref(false)
+const appeared = ref(false)
+onMounted(() => {
+  setTimeout(() => {
+    appear.value = true
+    setTimeout(() => {
+      appeared.value = true
+    }, 1000)
+  }, 0)
+})
 </script>
 
 <template>
   <UApp>
-    Just Fucking Use Nuxt.
+    <UMain>
+      <HeroBackground
+        class="absolute w-full -top-px transition-all text-primary shrink-0 -z-10"
+        :class="[
+          isLoading ? '' : (appear ? '' : 'opacity-0'),
+          appeared ? '' : 'duration-1000',
+        ]"
+      />
+    </UMain>
 
     <AppFooter />
   </UApp>
