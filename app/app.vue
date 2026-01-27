@@ -22,10 +22,16 @@ onMounted(() => {
     }, 1000)
   }, 0)
 })
+
+const { data: page } = await useAsyncData('/', () => queryCollection('content').path('/').first())
+
+if (!page.value) {
+  throw createError({ statusCode: 404, statusMessage: 'Page not found', fatal: true })
+}
 </script>
 
 <template>
-  <UApp>
+  <UApp v-if="page">
     <UMain>
       <HeroBackground
         class="absolute w-full -top-px transition-all text-primary shrink-0 -z-10"
@@ -34,6 +40,13 @@ onMounted(() => {
           appeared ? '' : 'duration-1000',
         ]"
       />
+
+      <UPageBody>
+        <ContentRenderer
+          v-if="page.body"
+          :value="page"
+        />
+      </UPageBody>
     </UMain>
 
     <AppFooter />

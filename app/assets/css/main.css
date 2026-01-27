@@ -19,6 +19,8 @@
 
 :root {
   --ui-container: 90rem;
+
+  --ui-header-height: 0rem;
 }
 
 .dark {
