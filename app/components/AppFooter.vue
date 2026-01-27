@@ -96,6 +96,15 @@ const columns: FooterColumn[] = [
 
     <template #right>
       <UButton
+        icon="i-lucide-heart"
+        color="neutral"
+        variant="ghost"
+        to="https://github.com/sponsors/barbapapazes?utm_source=justfuckingusenuxt.com&utm_medium=footer&utm_campaign=justfuckingusenuxt&utm_term=Support+Estéban&utm_content=link"
+        target="_blank"
+      >
+        <span class="sr-only"> Support Estéban </span>
+      </UButton>
+      <UButton
         icon="i-simple-icons-x"
         color="neutral"
         variant="ghost"
