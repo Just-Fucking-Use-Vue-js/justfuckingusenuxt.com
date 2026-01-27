@@ -3,7 +3,9 @@
 </script>
 
 <template>
-  <div>
+  <UApp>
     Just Fucking Use Nuxt.
-  </div>
+
+    <AppFooter />
+  </UApp>
 </template>
