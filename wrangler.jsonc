@@ -1,6 +1,6 @@
 {
   "$schema": "https://unpkg.com/wrangler@latest/config-schema.json",
-  "name": "justfuckingusevuejs-com",
+  "name": "justfuckingusenuxt-com",
   "preview_urls": true,
   "observability": {
     "enabled": true
