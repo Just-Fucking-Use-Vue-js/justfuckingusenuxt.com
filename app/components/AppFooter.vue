@@ -76,7 +76,7 @@ const columns: FooterColumn[] = [
     class="h-px"
   />
 
-  <UFooter>
+  <UFooter :ui="{ top: 'border-b border-default' }">
     <template #top>
       <UContainer>
         <UFooterColumns :columns="columns" />
@@ -90,20 +90,14 @@ const columns: FooterColumn[] = [
           target="_blank"
         >
           Estéban
-        </ULink> and the community.
+        </ULink> and the <ULink
+          to="https://github.com/Just-Fucking-Use-Vue-js?utm_source=justfuckingusenuxt.com&utm_medium=footer&utm_campaign=justfuckingusenuxt&utm_term=community&utm_content=link"
+          target="_blank"
+        > community</ULink>
       </p>
     </template>
 
     <template #right>
-      <UButton
-        icon="i-lucide-heart"
-        color="neutral"
-        variant="ghost"
-        to="https://github.com/sponsors/barbapapazes?utm_source=justfuckingusenuxt.com&utm_medium=footer&utm_campaign=justfuckingusenuxt&utm_term=Support+Estéban&utm_content=link"
-        target="_blank"
-      >
-        <span class="sr-only"> Support Estéban </span>
-      </UButton>
       <UButton
         icon="i-simple-icons-x"
         color="neutral"
