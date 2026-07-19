@@ -20,6 +20,29 @@ Stop wasting time configuring your project, your router, and your store.<br />St
 Nuxt brings boring decisions so you can **focus on building**.
 ::
 
+::overkill
+#title
+## “But isn’t Nuxt overkill?”
+
+#default
+Only if you need an app that will never grow. Nuxt is not a pile of features you must use on day one. It is Vue with a path forward.
+
+::gcard
+---
+class: my-6
+variant: subtle
+---
+
+1. **Start with a single page.** Run it as a client-rendered app if that is all it needs to be.
+2. **Add a route when there is another screen.** Create a file in `app/pages/`, and Nuxt supplies the router.
+3. **Add server code when the app needs it.** Put a handler in `server/api/`, beside the frontend that calls it.
+4. **Add rendering where it earns its keep.** Pre-render a landing page, server-render content that needs SEO, and keep dashboards on the client.
+
+::
+
+You scale the application, not the framework. Same project. Same Vue components. More capability **only when it solves a real problem**.
+::
+
 ::when-should-you-use-nuxt
 #title
 ## When should you use Nuxt?

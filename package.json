@@ -22,6 +22,7 @@
   },
   "devDependencies": {
     "@nuxt/eslint": "^1.13.0",
+    "@nuxt/kit": "^4.3.0",
     "better-sqlite3": "^12.6.2",
     "eslint": "^9.39.2",
     "typescript": "^5.9.3",
