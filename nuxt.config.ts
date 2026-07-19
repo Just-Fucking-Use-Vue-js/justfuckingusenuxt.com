@@ -1,11 +1,14 @@
 export default defineNuxtConfig({
-
   modules: [
     '@nuxt/eslint',
     '@nuxt/ui',
-    './modules/register-lib-components',
     '@nuxt/content',
+    '@nuxtjs/sitemap',
+    '@nuxtjs/robots',
+    './modules/register-lib-components',
   ],
+
+  site: { url: 'https://justfuckingusenuxt.com' },
 
   $production: {
     app: {

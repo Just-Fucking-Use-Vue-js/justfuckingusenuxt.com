@@ -2,7 +2,7 @@
 #title
 Just Fucking Use <span class="text-primary">Nuxt</span>.
 #description
-Stop wasting time configuring your project, your router, and your store.<br />Stop writing code nobody understands. Just fucking use Nuxt.
+Stop assembling your router, server, rendering strategy, and deployment pipeline by hand.<br />Build the Vue app you actually came here to build.
 ::
 
 ::your-vue-project
@@ -17,19 +17,45 @@ Stop wasting time configuring your project, your router, and your store.<br />St
 - SEO, data fetching, image handling, deployment?
 - Which five plugins will quietly become infrastructure?
 
-Nuxt brings boring decisions so you can **focus on building**.
+Nuxt handles the boring decisions so you can **focus on building**.
 ::
 
 ::what-the-fuck-is-nuxt
 ---
 features:
-  - Routing
-  - Rendering
-  - Server endpoints
-  - Data fetching
-  - SEO
-  - TypeScript
-  - Deployment
+  - title: Zero configuration
+    description: Start with Vue or TypeScript. Nuxt wires up the fundamentals so you can start building instead of configuring.
+    icon: i-lucide-wand-sparkles
+  - title: Rendering modes
+    description: Render on the server, client, or at build time. Pick the right approach for each route, not the whole app.
+    icon: i-lucide-monitor-cog
+  - title: Routing and layouts
+    description: Create a file for a page, then compose layouts around it. The router is ready when your next screen is.
+    icon: i-lucide-route
+  - title: Data fetching
+    description: Fetch data with composables that work across rendering modes, caching, and navigation without extra ceremony.
+    icon: i-lucide-database-zap
+  - title: Error handling
+    description: Catch failures with framework-aware handlers and build useful error pages without starting from scratch.
+    icon: i-lucide-circle-alert
+  - title: Transitions
+    description: Add smooth page and layout transitions when they improve the experience, not as a separate integration project.
+    icon: i-lucide-panels-top-left
+  - title: Assets and style
+    description: Optimize images, fonts, and scripts with first-class support that keeps production performance in view.
+    icon: i-lucide-image
+  - title: SEO and metadata
+    description: Ship crawlable HTML and manage typed metadata in the same place you build your pages.
+    icon: i-lucide-search-check
+  - title: Modular by design
+    description: Add capabilities through Nuxt modules that follow the same conventions as the framework itself.
+    icon: i-lucide-puzzle
+  - title: Middleware
+    description: Protect routes and run shared logic before rendering, with clear rules that stay close to your app.
+    icon: i-lucide-shield-check
+  - title: Type-safe by default
+    description: Use generated types and TypeScript support throughout the project, from routes to runtime configuration.
+    icon: i-lucide-braces
 ---
 #title
 ## What the fuck is Nuxt?
@@ -37,7 +63,28 @@ features:
 #default
 Nuxt is Vue with the boring, necessary parts already connected: routing, rendering, server endpoints, data fetching, SEO, TypeScript support, and deployment.
 
-You still write Vue. You just stop rebuilding the framework around it.
+You still write Vue. You just **stop rebuilding the framework** around it.
+::
+
+::stop-assembling-framework
+#title
+## Stop assembling a framework.
+
+#default
+Vue gives you an excellent view layer. A production application needs more than a view layer, so the same integration checklist appears in project after project.
+
+Nuxt turns that checklist into **conventions you can understand at a glance**.
+
+| With bare Vue                             | **With Nuxt**                | Example                                     |
+|-------------------------------------------|------------------------------|---------------------------------------------|
+| Install and configure a router            | Create a page                | `app/pages/about.vue`                       |
+| Choose a pattern for server data          | Use an SSR-aware composable  | `useFetch('/api/products')`                 |
+| Create and connect a separate API project | Add a server handler         | `server/api/orders.post.ts`                 |
+| Stitch together SEO tooling               | Define typed metadata        | `useSeoMeta({ title })`                     |
+| Commit to one rendering strategy          | Choose what each route needs | `routeRules: { '/blog/**': { swr: 3600 } }` |
+| Rework the output for each host           | Build portable Nitro output  | `nuxt build`                                |
+
+Nuxt does not make your application simple. It stops the setup from becoming an application of its own.
 ::
 
 ::goated-nuxt-modules
@@ -48,15 +95,25 @@ modules:
     description: 'A polished, accessible component library built on Tailwind CSS. Make the interface feel finished without rebuilding a design system before lunch.'
     href: 'https://nuxt.com/modules/ui?utm_source=justfuckingusenuxt.com&utm_medium=referral&utm_campaign=goated-modules'
     icon: 'i-lucide-panels-top-left'
+  - name: 'Nuxt SEO'
+    packageName: '@nuxtjs/seo'
+    description: 'The complete SEO toolkit for Nuxt: metadata, sitemaps, structured data, and more. Help search engines find and understand your app without assembling a dozen packages.'
+    href: 'https://nuxt.com/modules/seo?utm_source=justfuckingusenuxt.com&utm_medium=referral&utm_campaign=goated-modules'
+    icon: 'i-lucide-search-check'
   - name: 'Nuxt Tailwind CSS'
     packageName: '@nuxtjs/tailwindcss'
     description: 'Bring Tailwind into Nuxt with sensible defaults, config discovery, and minimal production CSS. Utility-first styling, minus the integration busywork.'
     href: 'https://nuxt.com/modules/tailwindcss?utm_source=justfuckingusenuxt.com&utm_medium=referral&utm_campaign=goated-modules'
     icon: 'i-lucide-palette'
+  - name: 'VueUse'
+    packageName: '@vueuse/nuxt'
+    description: 'A collection of battle-tested Vue composables with Nuxt-friendly auto-imports. Reach for browser APIs, reactive utilities, and common UI behavior without writing each helper from scratch.'
+    href: 'https://nuxt.com/modules/vueuse?utm_source=justfuckingusenuxt.com&utm_medium=referral&utm_campaign=goated-modules'
+    icon: 'i-lucide-wrench'
   - name: 'Nuxt MCP Toolkit'
     packageName: '@nuxtjs/mcp-toolkit'
     description: 'Create type-safe MCP tools, resources, prompts, and interactive apps directly in your Nuxt project. Your app can finally talk to AI clients without a second server.'
-    href: 'https://mcp-toolkit.nuxt.dev/'
+    href: 'https://mcp-toolkit.nuxt.dev/?utm_source=justfuckingusenuxt.com&utm_medium=referral&utm_campaign=goated-modules'
     icon: 'i-lucide-bot'
   - name: 'NuxtHub'
     packageName: '@nuxthub/core'
@@ -81,16 +138,47 @@ modules:
 Nuxt covers the foundation. Modules add the good stuff without making every integration a side quest. They just plug into the framework and it just works.
 ::
 
+::production-proof
+---
+href: 'https://nuxt.com/showcase?utm_source=justfuckingusenuxt.com&utm_medium=referral&utm_campaign=production-proof'
+groups:
+  - title: 'Global brands'
+    description: 'Public websites serving international audiences at serious scale.'
+  - title: 'Technology companies'
+    description: 'Production websites from developer tools and software businesses.'
+  - title: 'Public organizations'
+    description: 'Public-interest organizations where reliability and reach are not optional.'
+companies:
+  - Louis Vuitton
+  - Armani
+  - The North Face
+  - GitLab
+  - Directus
+  - n8n
+  - NASA JPL
+  - Croix-Rouge française
+  - Explore France
+---
+#title
+## Nuxt is already in production.
+
+#default
+Nuxt is not a promising toy waiting for a serious company to take a chance on it. It already powers production websites for global brands, technology companies, and public organizations around the world.
+::
+
 ::overkill
 #title
 ## “But isn’t Nuxt overkill?”
 
 #default
-Only if you need an app that will never grow. Nuxt is not a pile of features you must use on day one. It is Vue with a path forward.
+For a tiny static page with no real application behavior, use HTML. Seriously. Nuxt is a framework, not a personality test.
+
+But when you need routes, shared UI, real data, forms, SEO, authentication, server logic, or more than one person touching the project, “just Vue” quickly becomes “just install and configure eight more things.”
+
+Nuxt is not a pile of features you must use on day one. It is Vue with a path forward.
 
 ::gcard
 ---
-class: my-6
 variant: subtle
 ---
 
@@ -101,7 +189,7 @@ variant: subtle
 
 ::
 
-You scale the application, not the framework. Same project. Same Vue components. More capability **only when it solves a real problem**.
+You scale the application, not the setup. Same project. Same Vue components. More capability **only when it solves a real problem**.
 ::
 
 ::when-should-you-use-nuxt
@@ -133,10 +221,10 @@ You scale the application, not the framework. Same project. Same Vue components.
 
   ::why-nuxt
   #title
-  Need a server? Use Nuxt.
+  Need backend logic? Use Nuxt.
 
   #default
-  Nuxt ships with Nitro: a production-ready server runtime for server rendering, middleware, route rules, and deployment. One project, not a pile of services.
+  Put handlers in `server/api/` and Nitro handles routes, responses, middleware, and deployment targets. Keep the server beside the frontend that calls it, and split them only when the architecture actually demands it.
 
   #link
   [Meet the Nuxt server](https://nuxt.com/docs/4.x/getting-started/server?utm_source=justfuckingusenuxt.com&utm_medium=referral&utm_campaign=when-to-use-nuxt)
@@ -144,35 +232,13 @@ You scale the application, not the framework. Same project. Same Vue components.
 
   ::why-nuxt
   #title
-  Building an API? Use Nuxt.
-
-  #default
-  Put handlers in `server/api/` and Nitro handles routes, JSON responses, middleware, and deployment targets. Your frontend and API can finally share a home.
-
-  #link
-  [Learn about server endpoints](https://nuxt.com/docs/4.x/getting-started/server#server-endpoints--middleware?utm_source=justfuckingusenuxt.com&utm_medium=referral&utm_campaign=when-to-use-nuxt)
-  ::
-
-  ::why-nuxt
-  #title
-  Want the best SEO? Use Nuxt.
+  Need search engines to see your content? Use Nuxt.
 
   #default
   Nuxt can deliver fully rendered HTML to crawlers, while `useSeoMeta` gives you type-safe control of every important meta tag. Search engines get content, not a loading spinner.
 
   #link
   [Improve your SEO and meta](https://nuxt.com/docs/4.x/getting-started/seo-meta?utm_source=justfuckingusenuxt.com&utm_medium=referral&utm_campaign=when-to-use-nuxt)
-  ::
-
-  ::why-nuxt
-  #title
-  Never know where your code executes? Use Nuxt.
-
-  #default
-  Nuxt supports universal rendering and gives you explicit `import.meta.server` and `import.meta.client` guards when code needs a specific environment. No more guessing games.
-
-  #link
-  [Understand rendering in Nuxt](https://nuxt.com/docs/4.x/guide/concepts/rendering?utm_source=justfuckingusenuxt.com&utm_medium=referral&utm_campaign=when-to-use-nuxt)
   ::
 
   ::why-nuxt
@@ -188,17 +254,6 @@ You scale the application, not the framework. Same project. Same Vue components.
 
   ::why-nuxt
   #title
-  Want to use the bundler you want? Use Nuxt.
-
-  #default
-  Vite is the default, but Nuxt also supports webpack and Rspack. Choose the builder in `nuxt.config.ts` and keep your framework, instead of rebuilding your app around a bundler.
-
-  #link
-  [Choose your Nuxt builder](https://nuxt.com/docs/4.x/api/nuxt-config#builder?utm_source=justfuckingusenuxt.com&utm_medium=referral&utm_campaign=when-to-use-nuxt)
-  ::
-
-  ::why-nuxt
-  #title
   Want a delightful developer experience? Use Nuxt.
 
   #default
@@ -208,7 +263,7 @@ You scale the application, not the framework. Same project. Same Vue components.
   [Discover Nuxt auto-imports](https://nuxt.com/docs/4.x/guide/concepts/auto-imports?utm_source=justfuckingusenuxt.com&utm_medium=referral&utm_campaign=when-to-use-nuxt)
   ::
 
-  Honestly, you should just stop asking yourself if you should use Nuxt. **Just use Nuxt all the time**.
+  If you are building a Vue application rather than a one-off document, stop rebuilding the same foundation. **Just use Nuxt**.
 ::
 
 ::stop-overthinking
@@ -216,7 +271,7 @@ You scale the application, not the framework. Same project. Same Vue components.
 ## Stop configuring. Start shipping.
 
 #description
-Nuxt isn't perfect. Nothing is. But it gives you file-based routing, server rendering, API endpoints, SEO, and deployment in one codebase. Stop stitching together a router, server, build tool, and a pile of plugins before you can ship a page.
+Nuxt isn't perfect. Nothing is. But it gives you routing, rendering, server endpoints, data fetching, SEO, and deployment in one coherent codebase. Stop stitching together the foundation before you can ship the product.
 
 #default
 Just fucking use Nuxt.

@@ -1,6 +1,10 @@
 <script setup lang="ts">
 const props = defineProps<{
-  features: string[]
+  features: Array<{
+    title: string
+    description: string
+    icon: string
+  }>
 }>()
 
 defineSlots<{
@@ -12,32 +16,42 @@ defineSlots<{
 <template>
   <UContainer
     as="section"
-    class="py-14 sm:py-20"
+    class="pb-16 sm:pb-24 max-w-screen"
   >
-    <div class="max-w-3xl">
-      <div class="text-3xl font-bold tracking-tight sm:text-4xl">
+    <div class="max-w-prose mx-auto">
         <slot
           mdc-unwrap="p"
           name="title"
         />
-      </div>
 
-      <div class="mt-6 space-y-4 text-lg leading-8 text-muted text-pretty">
         <slot name="default" />
-      </div>
-
-      <ul
-        aria-label="Nuxt essentials"
-        class="mt-8 flex flex-wrap gap-2"
-      >
-        <li
-          v-for="feature in props.features"
-          :key="feature"
-          class="rounded-full bg-elevated px-3 py-1.5 text-sm font-medium text-highlighted"
-        >
-          {{ feature }}
-        </li>
-      </ul>
     </div>
+
+    <UCarousel
+      :items="props.features"
+      :ui="{
+        viewport: '-mx-4 sm:-mx-6 lg:-mx-8',
+        item: 'basis-[86%] ps-4 sm:basis-1/2 lg:basis-1/3 xl:basis-1/4',
+      }"
+      :auto-scroll="{
+        speed: 1.2,
+      }"
+      loop
+      aria-label="Nuxt essentials"
+      class="mt-10"
+    >
+      <template #default="{ item: feature }">
+        <ProseCard
+          :icon="feature.icon"
+          :title="feature.title"
+          class="my-px"
+          :ui="{
+            description: 'text-pretty leading-7 text-base',
+          }"
+        >
+          {{ feature.description }}
+        </ProseCard>
+      </template>
+    </UCarousel>
   </UContainer>
 </template>

@@ -8,9 +8,8 @@ defineSlots<{
 <template>
   <UPageHero
     :ui="{
-      container: '!pb-20 py-24 sm:py-32 lg:py-40',
+      container: 'pb-20! pt-24 sm:pt-32 lg:pt-40',
       title: 'text-5xl sm:text-7xl',
-      wrapper: 'lg:min-h-[540px]',
     }"
   >
     <template #title>

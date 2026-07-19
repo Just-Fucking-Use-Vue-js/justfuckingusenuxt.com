@@ -20,8 +20,6 @@
 }
 
 :root {
-  --ui-container: 60rem;
-
   --ui-header-height: 0rem;
 }
 
@@ -30,4 +28,19 @@
   --ui-bg-muted: var(--ui-color-neutral-900);
   --ui-bg-elevated: var(--ui-color-neutral-900);
   --ui-bg-accented: var(--ui-color-neutral-800);
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+::selection {
+  color: var(--ui-color-neutral-950);
+  background: var(--ui-primary);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
 }

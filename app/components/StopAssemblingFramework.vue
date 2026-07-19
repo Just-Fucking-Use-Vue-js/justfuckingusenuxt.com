@@ -2,22 +2,22 @@
 defineSlots<{
   title: (props: {}) => any
   default: (props: {}) => any
-  steps: (props: {}) => any
-  conclusion: (props: {}) => any
 }>()
 </script>
 
 <template>
-  <UContainer
-    as="section"
-  >
-    <div class="max-w-prose mx-auto">
+  <div class="pt-12 bg-linear-to-b from-muted dark:from-muted/40 to-default border-t border-default">
+    <UContainer
+      as="section"
+    >
+      <div class="max-w-prose mx-auto">
         <slot
           mdc-unwrap="p"
           name="title"
         />
 
         <slot name="default" />
-    </div>
-  </UContainer>
+      </div>
+    </UContainer>
+  </div>
 </template>

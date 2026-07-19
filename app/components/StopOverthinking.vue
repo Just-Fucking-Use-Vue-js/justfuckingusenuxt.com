@@ -7,20 +7,17 @@ defineSlots<{
 </script>
 
 <template>
-  <div class="bg-linear-to-b from-muted dark:from-muted/40 to-default">
+  <div class="py-16 sm:py-24 bg-linear-to-b from-muted dark:from-muted/40 to-default border-t border-default">
     <UContainer
-      class="py-14 sm:py-20"
       as="section"
     >
-      <div class="max-w-4xl">
-        <div class="text-3xl font-bold tracking-tight sm:text-4xl">
+      <div class="max-w-prose mx-auto">
           <slot
             mdc-unwrap="p"
             name="title"
           />
-        </div>
 
-        <div class="mt-6 max-w-3xl leading-8 text-muted text-pretty sm:text-lg">
+        <div class="text-muted">
           <slot
             mdc-unwrap="p"
             name="description"

@@ -6,9 +6,17 @@ defineSlots<{
 </script>
 
 <template>
-  <UContainer class="py-14 sm:py-20 text-lg">
-    <slot name="title" />
+  <UContainer
+    as="section"
+    class="pb-16 sm:pb-24"
+  >
+  <div class="max-w-prose mx-auto">
+    <slot
+      mdc-unwrap="p"
+      name="title"
+    />
 
     <slot />
+  </div>
   </UContainer>
 </template>

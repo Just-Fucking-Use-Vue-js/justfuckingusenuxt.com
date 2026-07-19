@@ -78,7 +78,6 @@ const columns: FooterColumn[] = [
 
   <UFooter
     :ui="{ top: 'border-b border-default' }"
-    style="--ui-container: 80rem"
   >
     <template #top>
       <UContainer>
@@ -101,6 +100,7 @@ const columns: FooterColumn[] = [
     </template>
 
     <template #right>
+      <UColorModeButton />
       <UButton
         square
         icon="i-simple-icons-x"
@@ -109,7 +109,7 @@ const columns: FooterColumn[] = [
         to="https://x.com/soubiran_"
         target="_blank"
       >
-        <span class="sr-only"> Estéban on X </span>
+        <span class="sr-only">Estéban on X</span>
       </UButton>
       <UButton
         square
@@ -119,7 +119,7 @@ const columns: FooterColumn[] = [
         to="https://linkedin.com/in/esteban25"
         target="_blank"
       >
-        <span class="sr-only"> Estéban on LinkedIn </span>
+        <span class="sr-only">Estéban on LinkedIn</span>
       </UButton>
       <UButton
         square
@@ -129,7 +129,7 @@ const columns: FooterColumn[] = [
         to="https://github.com/Just-Fucking-Use-Vue-js/justfuckingusenuxt.com"
         target="_blank"
       >
-        <span class="sr-only"> Just Fucking Use Nuxt on GitHub </span>
+        <span class="sr-only">Just Fucking Use Nuxt on GitHub</span>
       </UButton>
     </template>
   </UFooter>
