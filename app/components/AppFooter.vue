@@ -76,7 +76,10 @@ const columns: FooterColumn[] = [
     class="h-px"
   />
 
-  <UFooter :ui="{ top: 'border-b border-default' }">
+  <UFooter
+    :ui="{ top: 'border-b border-default' }"
+    style="--ui-container: 80rem"
+  >
     <template #top>
       <UContainer>
         <UFooterColumns :columns="columns" />
