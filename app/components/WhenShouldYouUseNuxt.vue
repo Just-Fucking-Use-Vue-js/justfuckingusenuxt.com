@@ -6,7 +6,7 @@ defineSlots<{
 </script>
 
 <template>
-  <UContainer>
+  <UContainer class="py-14 sm:py-20 text-lg">
     <slot name="title" />
 
     <slot />

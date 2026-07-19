@@ -12,8 +12,8 @@ const items = [{}]
   <UAccordion
     :items="items"
     :ui="{
-      trigger: 'py-2 text-base',
-      content: 'pb-2 text-sm',
+      trigger: 'py-2 text-lg font-normal',
+      content: 'pb-2 text-base',
       trailingIcon: 'hidden',
     }"
   >
