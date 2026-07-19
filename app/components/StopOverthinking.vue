@@ -8,7 +8,10 @@ defineSlots<{
 
 <template>
   <div class="bg-linear-to-b from-muted dark:from-muted/40 to-default">
-    <UContainer class="py-14 sm:py-20" as="section">
+    <UContainer
+      class="py-14 sm:py-20"
+      as="section"
+    >
       <div class="max-w-4xl">
         <div class="text-3xl font-bold tracking-tight sm:text-4xl">
           <slot
