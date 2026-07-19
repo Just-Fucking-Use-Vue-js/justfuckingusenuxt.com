@@ -2,11 +2,18 @@
 	"servers": {
 		"nuxt-ui": {
 			"url": "https://ui.nuxt.com/mcp",
-			"type": "http",
+			"type": "http"
 		},
 		"nuxt": {
 			"url": "https://nuxt.com/mcp",
 			"type": "http"
+		},
+		"github": {
+			"url": "https://api.githubcopilot.com/mcp/",
+			"type": "http",
+      "headers": {
+        "X-MCP-TOOLS": "issue_read,issue_write"
+      }
 		}
 	},
 	"inputs": []
