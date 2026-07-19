@@ -84,6 +84,38 @@ Nuxt turns that checklist into **conventions you can understand at a glance**.
 | Commit to one rendering strategy          | Choose what each route needs | `routeRules: { '/blog/**': { swr: 3600 } }` |
 | Rework the output for each host           | Build portable Nitro output  | `nuxt build`                                |
 
+Create a page. You have a route. No router ceremony, no extra wiring.
+
+```vue [app/pages/products.vue]
+<script setup lang="ts">
+const { data: products } = await useFetch('/api/products')
+</script>
+
+<template>
+  <ProductGrid :products="products ?? []" />
+</template>
+```
+
+Need an endpoint? Put it beside the app that calls it.
+
+```ts [server/api/orders.post.ts]
+export default defineEventHandler(async (event) => {
+  const order = await readBody(event)
+  return { accepted: true, order }
+})
+```
+
+Need a route to behave differently? Say so, once.
+
+```ts [nuxt.config.ts]
+export default defineNuxtConfig({
+  routeRules: {
+    '/blog/**': { swr: 3600 },
+    '/admin/**': { ssr: false },
+  },
+})
+```
+
 Nuxt does not make your application simple. It stops the setup from becoming an application of its own.
 ::
 
@@ -213,7 +245,7 @@ You scale the application, not the setup. Same project. Same Vue components. Mor
   Need a dynamic website? Use Nuxt.
 
   #default
-  Start with server-rendered HTML, then choose caching, prerendering, client-side rendering, or all three per route. Your website can grow up without changing frameworks.
+  Start with server-rendered HTML, then choose caching, prerendering, or client-side rendering where each route needs it. Your website can grow up without changing frameworks.
 
   #link
   [Explore Nuxt rendering modes](https://nuxt.com/docs/4.x/guide/concepts/rendering?utm_source=justfuckingusenuxt.com&utm_medium=referral&utm_campaign=when-to-use-nuxt)
