@@ -10,13 +10,13 @@ defineSlots<{
     as="section"
     class="pb-16 sm:pb-24"
   >
-  <div class="max-w-prose mx-auto">
-    <slot
-      mdc-unwrap="p"
-      name="title"
-    />
+    <div class="max-w-prose mx-auto">
+      <slot
+        mdc-unwrap="p"
+        name="title"
+      />
 
-    <slot />
-  </div>
+      <slot />
+    </div>
   </UContainer>
 </template>

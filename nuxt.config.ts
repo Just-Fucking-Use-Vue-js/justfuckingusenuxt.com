@@ -8,8 +8,6 @@ export default defineNuxtConfig({
     './modules/register-lib-components',
   ],
 
-  site: { url: 'https://justfuckingusenuxt.com' },
-
   $production: {
     app: {
       head: {
@@ -40,6 +38,8 @@ export default defineNuxtConfig({
   },
 
   css: ['~/assets/css/main.css'],
+
+  site: { url: 'https://justfuckingusenuxt.com' },
 
   routeRules: {
     '/': { prerender: true },

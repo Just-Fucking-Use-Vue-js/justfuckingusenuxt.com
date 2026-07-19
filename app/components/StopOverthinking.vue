@@ -12,10 +12,10 @@ defineSlots<{
       as="section"
     >
       <div class="max-w-prose mx-auto">
-          <slot
-            mdc-unwrap="p"
-            name="title"
-          />
+        <slot
+          mdc-unwrap="p"
+          name="title"
+        />
 
         <div class="text-muted">
           <slot

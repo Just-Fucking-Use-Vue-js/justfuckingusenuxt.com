@@ -19,12 +19,12 @@ defineSlots<{
     class="pb-16 sm:pb-24 max-w-screen"
   >
     <div class="max-w-prose mx-auto">
-        <slot
-          mdc-unwrap="p"
-          name="title"
-        />
+      <slot
+        mdc-unwrap="p"
+        name="title"
+      />
 
-        <slot name="default" />
+      <slot name="default" />
     </div>
 
     <UCarousel
