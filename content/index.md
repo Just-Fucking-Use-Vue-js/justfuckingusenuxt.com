@@ -40,6 +40,47 @@ Nuxt is Vue with the boring, necessary parts already connected: routing, renderi
 You still write Vue. You just stop rebuilding the framework around it.
 ::
 
+::goated-nuxt-modules
+---
+modules:
+  - name: 'Nuxt UI'
+    packageName: '@nuxt/ui'
+    description: 'A polished, accessible component library built on Tailwind CSS. Make the interface feel finished without rebuilding a design system before lunch.'
+    href: 'https://nuxt.com/modules/ui?utm_source=justfuckingusenuxt.com&utm_medium=referral&utm_campaign=goated-modules'
+    icon: 'i-lucide-panels-top-left'
+  - name: 'Nuxt Tailwind CSS'
+    packageName: '@nuxtjs/tailwindcss'
+    description: 'Bring Tailwind into Nuxt with sensible defaults, config discovery, and minimal production CSS. Utility-first styling, minus the integration busywork.'
+    href: 'https://nuxt.com/modules/tailwindcss?utm_source=justfuckingusenuxt.com&utm_medium=referral&utm_campaign=goated-modules'
+    icon: 'i-lucide-palette'
+  - name: 'Nuxt MCP Toolkit'
+    packageName: '@nuxtjs/mcp-toolkit'
+    description: 'Create type-safe MCP tools, resources, prompts, and interactive apps directly in your Nuxt project. Your app can finally talk to AI clients without a second server.'
+    href: 'https://mcp-toolkit.nuxt.dev/'
+    icon: 'i-lucide-bot'
+  - name: 'NuxtHub'
+    packageName: '@nuxthub/core'
+    description: 'Add a database, KV, blob storage, and caching to your Nuxt app. Build full-stack features without collecting cloud services like Pokémon cards.'
+    href: 'https://nuxt.com/modules/hub?utm_source=justfuckingusenuxt.com&utm_medium=referral&utm_campaign=goated-modules'
+    icon: 'i-lucide-database'
+  - name: 'Pinia'
+    packageName: '@pinia/nuxt'
+    description: 'The Vue store that is actually pleasant to use, with Nuxt-aware setup and auto-imported stores. Reach for it when state deserves a real home.'
+    href: 'https://nuxt.com/modules/pinia?utm_source=justfuckingusenuxt.com&utm_medium=referral&utm_campaign=goated-modules'
+    icon: 'i-lucide-layers-3'
+  - name: 'evlog'
+    packageName: 'evlog/nuxt'
+    description: 'Emit one structured, context-rich event per request instead of a panic-inducing trail of console logs. Debug production with evidence, not vibes.'
+    href: 'https://nuxt.com/modules/evlog?utm_source=justfuckingusenuxt.com&utm_medium=referral&utm_campaign=goated-modules'
+    icon: 'i-lucide-file-search'
+---
+#title
+## Nuxt Modules are fucking goated.
+
+#default
+Nuxt covers the foundation. Modules add the good stuff without making every integration a side quest. They just plug into the framework and it just works.
+::
+
 ::overkill
 #title
 ## “But isn’t Nuxt overkill?”
