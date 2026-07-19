@@ -75,7 +75,7 @@ Vue gives you an excellent view layer. A production application needs more than 
 
 Nuxt turns that checklist into **conventions you can understand at a glance**.
 
-| With bare Vue                             | **With Nuxt**                | Example                                     |
+| Starting from Vue                         | **With Nuxt conventions**    | Example                                     |
 |-------------------------------------------|------------------------------|---------------------------------------------|
 | Install and configure a router            | Create a page                | `app/pages/about.vue`                       |
 | Choose a pattern for server data          | Use an SSR-aware composable  | `useFetch('/api/products')`                 |
@@ -135,7 +135,7 @@ modules:
 ## Nuxt Modules are fucking goated.
 
 #default
-Nuxt covers the foundation. Modules add the good stuff without making every integration a side quest. They just plug into the framework and it just works.
+Nuxt covers the foundation. Modules add the good stuff without making every integration a side quest. They plug into the framework, and it just works.
 ::
 
 ::production-proof
@@ -163,7 +163,7 @@ companies:
 ## Nuxt is already in production.
 
 #default
-Nuxt is not a promising toy waiting for a serious company to take a chance on it. It already powers production websites for global brands, technology companies, and public organizations around the world.
+Nuxt is not a clever experiment waiting for a real-world test. It is already doing the work for global brands, technology companies, and public organizations around the world.
 ::
 
 ::overkill
@@ -171,9 +171,9 @@ Nuxt is not a promising toy waiting for a serious company to take a chance on it
 ## “But isn’t Nuxt overkill?”
 
 #default
-For a tiny static page with no real application behavior, use HTML. Seriously. Nuxt is a framework, not a personality test.
+For a tiny static page with no application behavior, use HTML. Seriously. Nuxt is a framework, not a personality test.
 
-But when you need routes, shared UI, real data, forms, SEO, authentication, server logic, or more than one person touching the project, “just Vue” quickly becomes “just install and configure eight more things.”
+But when you need routes, shared UI, real data, forms, SEO, authentication, server logic, or a growing team, the foundation starts demanding its own backlog.
 
 Nuxt is not a pile of features you must use on day one. It is Vue with a path forward.
 
@@ -243,7 +243,7 @@ You scale the application, not the setup. Same project. Same Vue components. Mor
 
   ::why-nuxt
   #title
-  Tired of fighting your hosting provider? Use Nuxt.
+  Need deployment flexibility? Use Nuxt.
 
   #default
   Nitro targets Node, static hosts, serverless platforms, and the edge. Nuxt adapts its output to your provider instead of making you adapt your entire app.
@@ -254,7 +254,7 @@ You scale the application, not the setup. Same project. Same Vue components. Mor
 
   ::why-nuxt
   #title
-  Want a delightful developer experience? Use Nuxt.
+  Want less boilerplate between you and the work? Use Nuxt.
 
   #default
   File-based routing, component and composable auto-imports, SSR-friendly state, and sensible defaults keep the boilerplate out of your way. You get to build the thing.
@@ -263,7 +263,7 @@ You scale the application, not the setup. Same project. Same Vue components. Mor
   [Discover Nuxt auto-imports](https://nuxt.com/docs/4.x/guide/concepts/auto-imports?utm_source=justfuckingusenuxt.com&utm_medium=referral&utm_campaign=when-to-use-nuxt)
   ::
 
-  If you are building a Vue application rather than a one-off document, stop rebuilding the same foundation. **Just use Nuxt**.
+  If you are building a Vue application rather than a one-off document, stop treating the same plumbing as a rite of passage. **Just use Nuxt**.
 ::
 
 ::stop-overthinking
