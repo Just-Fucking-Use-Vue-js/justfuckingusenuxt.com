@@ -20,6 +20,26 @@ Stop wasting time configuring your project, your router, and your store.<br />St
 Nuxt brings boring decisions so you can **focus on building**.
 ::
 
+::what-the-fuck-is-nuxt
+---
+features:
+  - Routing
+  - Rendering
+  - Server endpoints
+  - Data fetching
+  - SEO
+  - TypeScript
+  - Deployment
+---
+#title
+## What the fuck is Nuxt?
+
+#default
+Nuxt is Vue with the boring, necessary parts already connected: routing, rendering, server endpoints, data fetching, SEO, TypeScript support, and deployment.
+
+You still write Vue. You just stop rebuilding the framework around it.
+::
+
 ::overkill
 #title
 ## “But isn’t Nuxt overkill?”
