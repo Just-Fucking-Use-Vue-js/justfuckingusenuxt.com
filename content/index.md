@@ -5,6 +5,21 @@ Just Fucking Use <span class="text-primary">Nuxt</span>.
 Stop wasting time configuring your project, your router, and your store.<br />Stop writing code nobody understands. Just fucking use Nuxt.
 ::
 
+::your-vue-project
+#title
+## Your Vue project is becoming a pile of decisions.
+
+#default
+- Which router?
+- Which state setup?
+- SSR, SSG, SPA, or edge?
+- API server or separate backend?
+- SEO, data fetching, image handling, deployment?
+- Which five plugins will quietly become infrastructure?
+
+Nuxt brings boring decisions so you can **focus on building**.
+::
+
 ::when-should-you-use-nuxt
 #title
 ## When should you use Nuxt?
