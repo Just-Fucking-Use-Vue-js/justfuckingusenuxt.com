@@ -111,3 +111,14 @@ Stop wasting time configuring your project, your router, and your store.<br />St
 
   Honestly, you should just stop asking yourself if you should use Nuxt. **Just use Nuxt all the time**.
 ::
+
+::stop-overthinking
+#title
+## Stop configuring. Start shipping.
+
+#description
+Nuxt isn't perfect. Nothing is. But it gives you file-based routing, server rendering, API endpoints, SEO, and deployment in one codebase. Stop stitching together a router, server, build tool, and a pile of plugins before you can ship a page.
+
+#default
+Just fucking use Nuxt.
+::
