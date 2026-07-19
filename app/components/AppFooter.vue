@@ -99,6 +99,7 @@ const columns: FooterColumn[] = [
 
     <template #right>
       <UButton
+        square
         icon="i-simple-icons-x"
         color="neutral"
         variant="ghost"
@@ -108,6 +109,7 @@ const columns: FooterColumn[] = [
         <span class="sr-only"> Estéban on X </span>
       </UButton>
       <UButton
+        square
         icon="i-simple-icons-linkedin"
         color="neutral"
         variant="ghost"
@@ -117,6 +119,7 @@ const columns: FooterColumn[] = [
         <span class="sr-only"> Estéban on LinkedIn </span>
       </UButton>
       <UButton
+        square
         icon="i-simple-icons-github"
         color="neutral"
         variant="ghost"
