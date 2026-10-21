@@ -35,7 +35,7 @@ defineSlots<{
       <slot name="default" />
     </ol>
 
-    <p class="mx-auto mt-16 max-w-2xl text-center text-pretty text-muted sm:text-lg">
+    <p class="mx-auto max-w-2xl text-center text-pretty text-muted sm:text-lg">
       <slot
         mdc-unwrap="p"
         name="footer"

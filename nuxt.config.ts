@@ -91,4 +91,12 @@ export default defineNuxtConfig({
       subsets: ['latin'],
     },
   },
+
+  icon: {
+    clientBundle: {
+      // used from script, where the scanner can't see it, and a static host
+      // has no icon API to fall back on
+      icons: ['lucide:clipboard-check'],
+    },
+  },
 })

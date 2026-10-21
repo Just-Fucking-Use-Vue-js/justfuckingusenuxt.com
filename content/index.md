@@ -27,47 +27,51 @@ Every one of them is reasonable. Together they are a framework you now maintain.
 ---
 features:
   - title: Zero configuration
-    description: Start with Vue or TypeScript. Nuxt wires up the fundamentals so you can start building instead of configuring.
+    description: Start writing Vue. Nuxt wires up the rest.
     icon: i-lucide-wand-sparkles
-  - title: Rendering modes
-    description: Render on the server, on the client, or at build time. Pick the right approach for each route, not for the whole app.
-    icon: i-lucide-monitor-cog
-  - title: Routing and layouts
-    description: Create a file for a page, then compose layouts around it. The router is ready when your next screen is.
-    icon: i-lucide-route
-  - title: Data fetching
-    description: Fetch data with composables that work across rendering modes, caching, and navigation without extra ceremony.
-    icon: i-lucide-database-zap
+    example: "export default defineNuxtConfig({})"
   - title: Error handling
-    description: Catch failures with framework-aware handlers and build useful error pages without starting from scratch.
+    description: Framework-aware handlers and real error pages.
     icon: i-lucide-circle-alert
   - title: Transitions
-    description: Add page and layout transitions when they improve the experience, not as a separate integration project.
+    description: Page and layout transitions, built in.
     icon: i-lucide-panels-top-left
   - title: Assets and style
-    description: Optimize images, fonts, and scripts with first-class support that keeps production performance in view.
+    description: Images, fonts, and scripts, optimized.
     icon: i-lucide-image
+  - title: Routing and layouts
+    description: Create a file, get a route. Wrap it in a layout.
+    icon: i-lucide-route
+    example: app/pages/blog/[slug].vue → /blog/:slug
   - title: SEO and metadata
-    description: Ship crawlable HTML and manage typed metadata in the same place you build your pages.
+    description: Crawlable HTML and typed meta tags.
     icon: i-lucide-search-check
+  - title: Rendering modes
+    description: Server, client, or build time, chosen per route.
+    icon: i-lucide-monitor-cog
+    example: "'/blog/**': { swr: 3600 }"
   - title: Modular by design
-    description: Add capabilities through Nuxt modules that follow the same conventions as the framework itself.
+    description: Modules that follow the framework’s conventions.
     icon: i-lucide-puzzle
   - title: Middleware
-    description: Protect routes and run shared logic before rendering, with clear rules that stay close to your app.
+    description: Shared logic that runs before a route renders.
     icon: i-lucide-shield-check
   - title: Type-safe by default
-    description: Use generated types throughout the project, from routes to runtime configuration.
+    description: Generated types, from routes to runtime config.
     icon: i-lucide-braces
   - title: Deploy anywhere
-    description: Build once and ship to Node, static hosts, serverless platforms, or the edge without rewriting the app.
+    description: Node, static, serverless, or edge from one build.
     icon: i-lucide-rocket
+  - title: Data fetching
+    description: SSR-aware composables with caching built in.
+    icon: i-lucide-database-zap
+    example: "const { data } = await useFetch('/api/posts')"
 ---
 #title
 What the fuck is Nuxt?
 
 #description
-Nuxt is Vue with the boring, necessary parts already connected: routing, rendering, server endpoints, data fetching, SEO, TypeScript, and deployment. You still write Vue. You just **stop rebuilding the framework** around it.
+Nuxt is Vue with the boring, necessary parts already connected. You still write Vue. You just **stop rebuilding the framework** around it.
 ::
 
 ::stop-assembling-framework
@@ -285,7 +289,7 @@ When should you use Nuxt?
   Need a static website? Use Nuxt.
 
   #default
-  Nuxt prerenders your routes into HTML at build time, ready for any static host. Fast pages, low infrastructure overhead, no awkward workarounds.
+  Prerender every route to HTML for any static host.
 
   #link
   [Learn about prerendering](https://nuxt.com/docs/4.x/getting-started/prerendering?utm_source=justfuckingusenuxt.com&utm_medium=referral&utm_campaign=when-to-use-nuxt)
@@ -296,7 +300,7 @@ When should you use Nuxt?
   Need a dynamic website? Use Nuxt.
 
   #default
-  Start with server-rendered HTML, then choose caching, prerendering, or client-side rendering where each route needs it. Your website can grow up without changing frameworks.
+  Server-render, cache, or prerender each route as it needs.
 
   #link
   [Explore rendering modes](https://nuxt.com/docs/4.x/guide/concepts/rendering?utm_source=justfuckingusenuxt.com&utm_medium=referral&utm_campaign=when-to-use-nuxt)
@@ -307,7 +311,7 @@ When should you use Nuxt?
   Need backend logic? Use Nuxt.
 
   #default
-  Put handlers in `server/api/` and Nitro handles routes, responses, middleware, and deployment targets. Keep the server beside the frontend that calls it, and split them only when the architecture demands it.
+  Put handlers in `server/api/`, next to the frontend that calls them.
 
   #link
   [Meet the Nuxt server](https://nuxt.com/docs/4.x/getting-started/server?utm_source=justfuckingusenuxt.com&utm_medium=referral&utm_campaign=when-to-use-nuxt)
@@ -318,7 +322,7 @@ When should you use Nuxt?
   Need search engines to see your content? Use Nuxt.
 
   #default
-  Nuxt delivers fully rendered HTML to crawlers, and `useSeoMeta` gives you type-safe control of every important meta tag. Search engines get content, not a loading spinner.
+  Crawlers get rendered HTML, not a loading spinner.
 
   #link
   [Improve your SEO](https://nuxt.com/docs/4.x/getting-started/seo-meta?utm_source=justfuckingusenuxt.com&utm_medium=referral&utm_campaign=when-to-use-nuxt)
@@ -329,7 +333,7 @@ When should you use Nuxt?
   Need deployment flexibility? Use Nuxt.
 
   #default
-  Nitro targets Node, static hosts, serverless platforms, and the edge. Nuxt adapts its output to your provider instead of making you adapt your entire app.
+  One build for Node, static hosts, serverless, or the edge.
 
   #link
   [See deployment options](https://nuxt.com/docs/4.x/getting-started/deployment?utm_source=justfuckingusenuxt.com&utm_medium=referral&utm_campaign=when-to-use-nuxt)
@@ -340,7 +344,7 @@ When should you use Nuxt?
   Want less boilerplate between you and the work? Use Nuxt.
 
   #default
-  File-based routing, auto-imported components and composables, SSR-friendly state, and sensible defaults keep the boilerplate out of your way. You get to build the thing.
+  File routing, auto-imports, and sensible defaults. You build the thing.
 
   #link
   [Discover auto-imports](https://nuxt.com/docs/4.x/guide/concepts/auto-imports?utm_source=justfuckingusenuxt.com&utm_medium=referral&utm_campaign=when-to-use-nuxt)
