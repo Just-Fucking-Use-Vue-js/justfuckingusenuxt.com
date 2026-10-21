@@ -57,7 +57,7 @@ if (!page.value) {
   <UApp v-if="page">
     <a
       href="#main-content"
-      class="fixed left-4 top-4 z-100 -translate-y-24 rounded-md bg-default px-4 py-2 font-medium text-highlighted shadow-lg ring-1 ring-default transition-transform focus:translate-y-0 motion-reduce:transition-none"
+      class="fixed left-4 top-4 z-100 -translate-y-24 rounded-md bg-default px-4 py-2 font-medium text-highlighted shadow-lg ring-1 ring-default focus:translate-y-0"
     >
       Skip to content
     </a>

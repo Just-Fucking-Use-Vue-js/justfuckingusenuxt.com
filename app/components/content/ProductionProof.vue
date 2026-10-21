@@ -52,7 +52,10 @@ const rows = computed(() => [
       />
     </template>
 
-    <div class="flex min-w-0 flex-col gap-10 mask-x-from-85% mask-x-to-100%">
+    <div
+      class="flex min-w-0 flex-col gap-10 mask-x-from-85% mask-x-to-100% motion-reduce:hidden"
+      aria-hidden="true"
+    >
       <UMarquee
         v-for="(row, index) in rows"
         :key="index"
@@ -71,6 +74,21 @@ const rows = computed(() => [
         />
       </UMarquee>
     </div>
+
+    <!-- read by screen readers; with reduced motion, the logos sit still in a wrapped grid -->
+    <ul class="sr-only flex-wrap items-center justify-center gap-x-14 gap-y-10 text-highlighted motion-reduce:not-sr-only motion-reduce:flex">
+      <li
+        v-for="company in props.companies"
+        :key="company.name"
+      >
+        <BrandLogo
+          :src="`/logos/${company.logo}.svg`"
+          :alt="company.name"
+          :width="company.width"
+          :height="company.height"
+        />
+      </li>
+    </ul>
 
     <ul class="grid gap-8 border-t border-default pt-10 sm:grid-cols-3">
       <li

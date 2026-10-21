@@ -90,7 +90,7 @@ async function copyCommand() {
         ref="logo"
         type="button"
         aria-label="Send a wave through the mountains"
-        class="rounded-lg p-1 transition-transform duration-150 ease-out active:scale-95 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary motion-reduce:transition-none"
+        class="rounded-lg p-1 transition-transform duration-150 ease-out active:scale-95 motion-reduce:active:scale-100 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary motion-reduce:transition-none"
       >
         <AppLogo class="size-14" />
       </button>
@@ -132,9 +132,9 @@ async function copyCommand() {
           <Transition
             mode="out-in"
             enter-active-class="transition-[opacity,scale] duration-150 ease-out motion-reduce:transition-opacity"
-            leave-active-class="transition-[opacity,scale] duration-150 ease-out motion-reduce:transition-opacity"
-            enter-from-class="opacity-0 scale-80 motion-reduce:scale-100"
-            leave-to-class="opacity-0 scale-80 motion-reduce:scale-100"
+            leave-active-class="transition-[opacity,scale] duration-75 ease-out motion-reduce:transition-opacity"
+            enter-from-class="opacity-0 scale-90 motion-reduce:scale-100"
+            leave-to-class="opacity-0 scale-90 motion-reduce:scale-100"
           >
             <UIcon
               :key="copied ? 'check' : 'copy'"

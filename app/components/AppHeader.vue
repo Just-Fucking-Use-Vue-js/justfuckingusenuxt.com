@@ -1,13 +1,32 @@
 <script setup lang="ts">
 import type { NavigationMenuItem } from '@nuxt/ui'
 
-const items: NavigationMenuItem[] = [
-  { label: 'What Is Nuxt', to: '#what-is-nuxt' },
-  { label: 'Conventions', to: '#conventions' },
-  { label: 'Modules', to: '#modules' },
-  { label: 'Showcase', to: '#showcase' },
-  { label: 'When to Use It', to: '#when-to-use-nuxt' },
+// Only these links scroll smoothly. Focus moves from Tab and the skip link
+// jump, since keyboard actions shouldn't wait on an animation.
+function scrollToSection(event: Event, id: string) {
+  const section = document.getElementById(id)
+  if (!section) return
+  // Reka passes its own select event; the link's click is inside it
+  const click = (event as CustomEvent<{ originalEvent?: Event }>).detail?.originalEvent ?? event
+  click.preventDefault()
+  const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches
+  section.scrollIntoView({ behavior: reduce ? 'auto' : 'smooth' })
+  history.pushState(null, '', `#${id}`)
+}
+
+const sections = [
+  { label: 'What Is Nuxt', id: 'what-is-nuxt' },
+  { label: 'Conventions', id: 'conventions' },
+  { label: 'Modules', id: 'modules' },
+  { label: 'Showcase', id: 'showcase' },
+  { label: 'When to Use It', id: 'when-to-use-nuxt' },
 ]
+
+const items: NavigationMenuItem[] = sections.map(({ label, id }) => ({
+  label,
+  to: `#${id}`,
+  onSelect: (event: Event) => scrollToSection(event, id),
+}))
 </script>
 
 <template>
