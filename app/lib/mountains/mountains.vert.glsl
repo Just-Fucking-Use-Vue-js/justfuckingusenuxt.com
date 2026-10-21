@@ -22,6 +22,8 @@ uniform vec2 uResolution;
 uniform vec2 uPointer;
 /** shockwave phases 0..1; negative entries are inactive */
 uniform float uWave[8];
+/** the softer wave fired when the pointer enters the logo; negative while inactive */
+uniform float uHoverWave;
 /** x: seconds, y: pointer presence 0..1 */
 uniform vec2 uMisc;
 /** x: horizon in clip space, y: 1 in light mode */
@@ -188,6 +190,7 @@ void main () {
   for (int i = 0; i < 8; i++) {
     shock += shockwave(uWave[i], dist);
   }
+  shock += shockwave(uHoverWave, dist) * 0.25;
 
   float fog = exp(-(z - Z_NEAR) * 0.075) * (1.0 - smoothstep(0.86, 1.0, v));
   float nearFade = smoothstep(Z_NEAR, 2.6, z);

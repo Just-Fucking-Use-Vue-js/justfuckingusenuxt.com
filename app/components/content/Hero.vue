@@ -13,7 +13,6 @@ const canvas = useTemplateRef('canvas')
 const logo = useTemplateRef('logo')
 const painted = ref(false)
 const colorMode = useColorMode()
-const toast = useToast()
 
 let renderer: MountainsRenderer | undefined
 
@@ -43,11 +42,22 @@ onNuxtReady(async () => {
 
 watch(() => colorMode.value, value => renderer?.setLight(value === 'light'))
 
-onBeforeUnmount(() => renderer?.dispose())
+onBeforeUnmount(() => {
+  renderer?.dispose()
+  clearTimeout(copiedTimer)
+})
+
+// the button itself confirms the copy, next to the pointer, for 1.5s
+const copied = ref(false)
+let copiedTimer: ReturnType<typeof setTimeout> | undefined
 
 async function copyCommand() {
   await navigator.clipboard.writeText(command)
-  toast.add({ title: 'Command copied', icon: 'i-lucide-clipboard-check', color: 'success' })
+  copied.value = true
+  clearTimeout(copiedTimer)
+  copiedTimer = setTimeout(() => {
+    copied.value = false
+  }, 1500)
 }
 </script>
 
@@ -114,12 +124,30 @@ async function copyCommand() {
         color="neutral"
         variant="subtle"
         icon="i-lucide-terminal"
-        trailing-icon="i-lucide-copy"
         class="font-mono"
-        :ui="{ trailingIcon: 'text-dimmed' }"
         aria-label="Copy npm create nuxt@latest"
         @click="copyCommand"
-      />
+      >
+        <template #trailing="{ ui }">
+          <Transition
+            mode="out-in"
+            enter-active-class="transition-[opacity,scale] duration-150 ease-out motion-reduce:transition-opacity"
+            leave-active-class="transition-[opacity,scale] duration-150 ease-out motion-reduce:transition-opacity"
+            enter-from-class="opacity-0 scale-80 motion-reduce:scale-100"
+            leave-to-class="opacity-0 scale-80 motion-reduce:scale-100"
+          >
+            <UIcon
+              :key="copied ? 'check' : 'copy'"
+              :name="copied ? 'i-lucide-check' : 'i-lucide-copy'"
+              :class="ui.trailingIcon({ class: copied ? 'text-primary' : 'text-dimmed' })"
+            />
+          </Transition>
+        </template>
+      </UButton>
+      <span
+        class="sr-only"
+        aria-live="polite"
+      >{{ copied ? 'Command copied' : '' }}</span>
     </template>
   </UPageHero>
 </template>

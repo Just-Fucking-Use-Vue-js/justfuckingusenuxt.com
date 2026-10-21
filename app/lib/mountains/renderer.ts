@@ -26,7 +26,7 @@ export interface MountainsOptions {
   canvas: HTMLCanvasElement
   /** the hero copy; the particles thin out around it */
   slot: HTMLElement
-  /** clicking it sends a shockwave through the range */
+  /** clicking it sends a shockwave through the range, hovering it a softer one */
   trigger?: HTMLElement | null
   light: boolean
 }
@@ -84,6 +84,7 @@ export function createMountains(options: MountainsOptions): MountainsRenderer {
   let smoothed: Point = [0.5, 0.5]
   let pointerHold = 0
   const wavePhases = new Float32Array(MAX_WAVES).fill(-1)
+  let hoverWavePhase = -1
 
   let lastTime = 0
   let lastRender = -Infinity
@@ -155,6 +156,7 @@ export function createMountains(options: MountainsOptions): MountainsRenderer {
     uResolution: at('uResolution'),
     uPointer: at('uPointer'),
     uWave: at('uWave[0]'),
+    uHoverWave: at('uHoverWave'),
     uMisc: at('uMisc'),
     uView: at('uView'),
     uLight: at('uLight'),
@@ -218,11 +220,18 @@ export function createMountains(options: MountainsOptions): MountainsRenderer {
   const handlePointerLeave = () => {
     pointer = undefined
   }
+  // Waves are pure motion, so they don't play at all with reduced motion.
   const handleTriggerClick = () => {
+    if (reducedMotion) return
     let index = wavePhases.findIndex(phase => phase < 0)
     // if every slot is taken, replace the wave closest to finishing
     if (index < 0) index = wavePhases.indexOf(Math.max(...wavePhases))
     wavePhases[index] = 0
+    redraw()
+  }
+  const handleTriggerEnter = (event: PointerEvent) => {
+    if (reducedMotion || event.pointerType === 'touch') return
+    hoverWavePhase = 0
     redraw()
   }
   // A lost context clears the drawing buffer; drop the canvas and keep the glow.
@@ -290,6 +299,10 @@ export function createMountains(options: MountainsOptions): MountainsRenderer {
       wavePhases[i]! += dt * WAVE_RATE
       if (wavePhases[i]! >= 1) wavePhases[i] = -1
     }
+    if (hoverWavePhase >= 0) {
+      hoverWavePhase += dt * WAVE_RATE
+      if (hoverWavePhase >= 1) hoverWavePhase = -1
+    }
 
     gl.uniform2ui(uniforms.uGrid, grid[0], grid[1])
     gl.uniform2f(uniforms.uSlotCentre, slotCentre[0], slotCentre[1])
@@ -297,6 +310,7 @@ export function createMountains(options: MountainsOptions): MountainsRenderer {
     gl.uniform2f(uniforms.uResolution, width, height)
     gl.uniform2f(uniforms.uPointer, smoothed[0], smoothed[1])
     gl.uniform1fv(uniforms.uWave, wavePhases)
+    gl.uniform1f(uniforms.uHoverWave, hoverWavePhase)
     gl.uniform2f(uniforms.uMisc, time, pointerHold)
     gl.uniform2f(uniforms.uView, horizon, light)
     gl.uniform1f(uniforms.uLight, light)
@@ -309,8 +323,7 @@ export function createMountains(options: MountainsOptions): MountainsRenderer {
       painted = true
       api.onFirstFrame?.()
     }
-    const animating = wavePhases.some(phase => phase >= 0)
-    if (reducedMotion && !animating) {
+    if (reducedMotion) {
       cancelAnimationFrame(rafId)
       rafId = 0
     }
@@ -339,6 +352,7 @@ export function createMountains(options: MountainsOptions): MountainsRenderer {
     document.documentElement.removeEventListener('pointerleave', handlePointerLeave)
     document.removeEventListener('visibilitychange', handleVisibility)
     trigger?.removeEventListener('click', handleTriggerClick)
+    trigger?.removeEventListener('pointerenter', handleTriggerEnter)
     canvas.removeEventListener('webglcontextlost', handleContextLost)
     gl.deleteProgram(program)
   }
@@ -360,6 +374,7 @@ export function createMountains(options: MountainsOptions): MountainsRenderer {
   document.documentElement.addEventListener('pointerleave', handlePointerLeave)
   document.addEventListener('visibilitychange', handleVisibility)
   trigger?.addEventListener('click', handleTriggerClick)
+  trigger?.addEventListener('pointerenter', handleTriggerEnter)
   canvas.addEventListener('webglcontextlost', handleContextLost)
   visible = !document.hidden
   rafId ||= requestAnimationFrame(frame)
