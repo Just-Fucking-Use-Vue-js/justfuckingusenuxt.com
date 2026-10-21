@@ -5,7 +5,6 @@ export default defineNuxtConfig({
     '@nuxt/content',
     '@nuxtjs/sitemap',
     '@nuxtjs/robots',
-    './modules/register-lib-components',
   ],
 
   $production: {
@@ -25,6 +24,7 @@ export default defineNuxtConfig({
   devtools: {
     enabled: false,
   },
+
   app: {
     head: {
       title: 'Just Fucking Use Nuxt',
@@ -32,7 +32,8 @@ export default defineNuxtConfig({
         lang: 'en',
       },
       link: [
-        { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
+        { rel: 'icon', type: 'image/svg+xml', href: '/favicon.svg' },
+        { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico', sizes: '32x32' },
       ],
     },
   },
@@ -41,15 +42,53 @@ export default defineNuxtConfig({
 
   site: { url: 'https://justfuckingusenuxt.com' },
 
+  colorMode: {
+    preference: 'dark',
+    fallback: 'dark',
+  },
+
+  content: {
+    experimental: {
+      // Node's built-in SQLite, so there is no native module to compile
+      sqliteConnector: 'native',
+    },
+  },
+
   routeRules: {
     '/': { prerender: true },
   },
 
-  compatibilityDate: '2025-01-15',
+  future: {
+    compatibilityVersion: 5,
+  },
+
+  experimental: {
+    buildCache: true,
+    extractAsyncDataHandlers: true,
+    // @nuxt/content's server routes still rely on Nitro auto-imports
+    nitroAutoImports: true,
+  },
+
+  compatibilityDate: '2026-10-21',
+
+  nitro: {
+    // the whole site is one prerendered page served from static assets
+    preset: 'static',
+  },
 
   eslint: {
     config: {
       stylistic: true,
+    },
+  },
+
+  fonts: {
+    families: [
+      { name: 'Inter', weights: [400, 500, 600], global: true },
+      { name: 'Outfit', weights: [500], global: true },
+    ],
+    defaults: {
+      subsets: ['latin'],
     },
   },
 })

@@ -2,6 +2,7 @@
 const siteUrl = 'https://justfuckingusenuxt.com'
 const title = 'Just Fucking Use Nuxt'
 const description = 'Stop assembling your Vue framework by hand. Nuxt gives you routing, rendering, server endpoints, data fetching, SEO, and deployment in one coherent codebase.'
+const imageAlt = 'Just Fucking Use Nuxt, over a range of green particle mountains.'
 
 useSeoMeta({
   title,
@@ -11,14 +12,15 @@ useSeoMeta({
   ogType: 'website',
   ogUrl: siteUrl,
   ogSiteName: title,
-  ogImage: `${siteUrl}/og/index.svg`,
-  ogImageAlt: 'Just Fucking Use Nuxt. Stop assembling a framework. Start shipping your Vue app.',
+  ogImage: `${siteUrl}/og.png`,
+  ogImageAlt: imageAlt,
   ogImageWidth: 1200,
   ogImageHeight: 630,
+  ogImageType: 'image/png',
   twitterTitle: title,
   twitterDescription: description,
-  twitterImage: `${siteUrl}/og/index.svg`,
-  twitterImageAlt: 'Just Fucking Use Nuxt. Stop assembling a framework. Start shipping your Vue app.',
+  twitterImage: `${siteUrl}/og.png`,
+  twitterImageAlt: imageAlt,
   twitterCard: 'summary_large_image',
 })
 
@@ -27,8 +29,8 @@ useHead({
     { rel: 'canonical', href: siteUrl },
   ],
   meta: [
-    { name: 'theme-color', content: '#020617', media: '(prefers-color-scheme: dark)' },
-    { name: 'theme-color', content: '#ffffff', media: '(prefers-color-scheme: light)' },
+    { name: 'theme-color', content: '#0A0A0A', media: '(prefers-color-scheme: dark)' },
+    { name: 'theme-color', content: '#FFFFFF', media: '(prefers-color-scheme: light)' },
   ],
   script: [
     {
@@ -44,19 +46,6 @@ useHead({
   ],
 })
 
-const { isLoading } = useLoadingIndicator()
-
-const appear = ref(false)
-const appeared = ref(false)
-onMounted(() => {
-  setTimeout(() => {
-    appear.value = true
-    setTimeout(() => {
-      appeared.value = true
-    }, 1000)
-  }, 0)
-})
-
 const { data: page } = await useAsyncData('/', () => queryCollection('content').path('/').first())
 
 if (!page.value) {
@@ -68,26 +57,18 @@ if (!page.value) {
   <UApp v-if="page">
     <a
       href="#main-content"
-      class="fixed left-4 top-4 z-50 -translate-y-24 rounded-md bg-default px-4 py-2 font-medium text-highlighted shadow-lg ring-1 ring-default transition-transform focus:translate-y-0 motion-reduce:transition-none"
+      class="fixed left-4 top-4 z-100 -translate-y-24 rounded-md bg-default px-4 py-2 font-medium text-highlighted shadow-lg ring-1 ring-default transition-transform focus:translate-y-0 motion-reduce:transition-none"
     >
       Skip to content
     </a>
 
-    <UMain id="main-content">
-      <AppHeroBackground
-        class="absolute w-full -top-px transition-all text-primary shrink-0 -z-10 motion-reduce:transition-none"
-        :class="[
-          isLoading ? '' : (appear ? '' : 'opacity-0'),
-          appeared ? '' : 'duration-1000',
-        ]"
-      />
+    <AppHeader />
 
-      <UPageBody class="py-0 my-0 text-lg">
-        <ContentRenderer
-          v-if="page.body"
-          :value="page"
-        />
-      </UPageBody>
+    <UMain id="main-content">
+      <ContentRenderer
+        v-if="page.body"
+        :value="page"
+      />
     </UMain>
 
     <AppFooter />

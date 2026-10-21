@@ -1,4 +1,12 @@
-<script lang="ts" setup>
+<script setup lang="ts">
+defineProps<{
+  features: Array<{
+    title: string
+    description: string
+    icon: string
+  }>
+}>()
+
 defineSlots<{
   title: (props: {}) => any
   description: (props: {}) => any
@@ -6,11 +14,10 @@ defineSlots<{
 </script>
 
 <template>
-  <UPageHero
-    :ui="{
-      container: 'pb-20! pt-24 sm:pt-32 lg:pt-40',
-      title: 'text-5xl sm:text-7xl',
-    }"
+  <UPageSection
+    id="what-is-nuxt"
+    :features="features"
+    :ui="{ features: 'lg:grid-cols-4 gap-x-8 gap-y-10', description: 'max-w-3xl mx-auto' }"
   >
     <template #title>
       <slot
@@ -25,5 +32,5 @@ defineSlots<{
         name="description"
       />
     </template>
-  </UPageHero>
+  </UPageSection>
 </template>
