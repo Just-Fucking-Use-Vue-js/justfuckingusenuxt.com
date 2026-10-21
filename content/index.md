@@ -62,6 +62,13 @@ features:
   - title: Deploy anywhere
     description: Node, static, serverless, or edge from one build.
     icon: i-lucide-rocket
+    logos:
+      - { name: 'Node.js', icon: 'i-simple-icons-nodedotjs' }
+      - { name: 'Cloudflare', icon: 'i-simple-icons-cloudflare' }
+      - { name: 'Vercel', icon: 'i-simple-icons-vercel' }
+      - { name: 'Netlify', icon: 'i-simple-icons-netlify' }
+      - { name: 'AWS', icon: 'i-simple-icons-amazonwebservices' }
+      - { name: 'Deno', icon: 'i-simple-icons-deno' }
   - title: Data fetching
     description: SSR-aware composables with caching built in.
     icon: i-lucide-database-zap

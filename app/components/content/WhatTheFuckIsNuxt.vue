@@ -6,6 +6,8 @@ defineProps<{
     icon: string
     /** a one-line example; the card spans two columns to show it */
     example?: string
+    /** brands shown along the bottom of the card */
+    logos?: Array<{ name: string, icon: string }>
   }>
 }>()
 
@@ -34,11 +36,11 @@ defineSlots<{
       />
     </template>
 
-    <ul class="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+    <ul class="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
       <li
         v-for="feature in features"
         :key="feature.title"
-        class="flex"
+        class="flex min-w-0"
         :class="{ 'sm:col-span-2': feature.example }"
       >
         <UPageCard
@@ -50,10 +52,31 @@ defineSlots<{
           :ui="{ title: 'text-base', description: 'text-sm text-muted', footer: 'w-full' }"
         >
           <template
-            v-if="feature.example"
+            v-if="feature.example || feature.logos"
             #footer
           >
-            <code class="block w-full truncate rounded-md bg-default px-3 py-2 font-mono text-sm text-primary ring ring-default">{{ feature.example }}</code>
+            <code
+              v-if="feature.example"
+              class="block w-full break-words rounded-md bg-default px-3 py-2 font-mono text-sm text-primary ring ring-default"
+            >{{ feature.example }}</code>
+            <ul
+              v-if="feature.logos"
+              class="flex flex-wrap items-center gap-4"
+            >
+              <li
+                v-for="logo in feature.logos"
+                :key="logo.name"
+              >
+                <UTooltip :text="logo.name">
+                  <UIcon
+                    :name="logo.icon"
+                    class="size-5 text-muted"
+                    role="img"
+                    :aria-label="logo.name"
+                  />
+                </UTooltip>
+              </li>
+            </ul>
           </template>
         </UPageCard>
       </li>
