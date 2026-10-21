@@ -29,8 +29,6 @@ export interface MountainsOptions {
   /** clicking it sends a shockwave through the range */
   trigger?: HTMLElement | null
   light: boolean
-  /** draw on a software renderer too, for screenshots on machines without a GPU */
-  force?: boolean
 }
 
 export interface MountainsRenderer {
@@ -116,7 +114,7 @@ export function createMountains(options: MountainsOptions): MountainsRenderer {
     || gl.getParameter(gl.RENDERER)
     || '',
   )
-  if (!options.force && SOFTWARE_RENDERERS.test(rendererName)) {
+  if (SOFTWARE_RENDERERS.test(rendererName)) {
     throw new Error(`Software renderer (${rendererName}).`)
   }
 

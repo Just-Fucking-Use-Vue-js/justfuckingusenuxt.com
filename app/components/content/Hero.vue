@@ -19,12 +19,10 @@ let renderer: MountainsRenderer | undefined
 
 // The scene starts once the page is idle, so it never competes with the copy
 // for the first paint. Without WebGL2, or on a software renderer, the static
-// glow stays on its own. `?shader=0` turns it off and `?shader=force` keeps it
-// on a software renderer, for screenshots on machines without a GPU.
+// glow stays on its own.
 onNuxtReady(async () => {
-  const mode = new URLSearchParams(window.location.search).get('shader')
   const slot = root.value?.$el.querySelector<HTMLElement>('[data-slot="wrapper"]')
-  if (!canvas.value || !slot || !window.WebGL2RenderingContext || mode === '0') return
+  if (!canvas.value || !slot || !window.WebGL2RenderingContext) return
 
   const { createMountains } = await import('~/lib/mountains/renderer')
   try {
@@ -33,7 +31,6 @@ onNuxtReady(async () => {
       slot,
       trigger: logo.value,
       light: colorMode.value === 'light',
-      force: mode === 'force',
     })
   }
   catch {
