@@ -1,7 +1,8 @@
 allowBuilds:
   '@parcel/watcher': false
-  better-sqlite3: true
+  better-sqlite3: false
   esbuild: false
   unrs-resolver: false
   vue-demi: false
-minimumReleaseAge: false # TODO: remove in a couple of weeks
+minimumReleaseAgeExclude:
+  - '@iconify-json/lucide@1.2.147'
