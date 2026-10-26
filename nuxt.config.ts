@@ -1,3 +1,5 @@
+import { site } from './shared/site.ts'
+
 export default defineNuxtConfig({
   modules: [
     '@nuxt/eslint',
@@ -27,9 +29,9 @@ export default defineNuxtConfig({
 
   app: {
     head: {
-      title: 'Just Fucking Use Nuxt',
+      title: site.name,
       htmlAttrs: {
-        lang: 'en',
+        lang: site.language,
       },
       link: [
         { rel: 'icon', type: 'image/svg+xml', href: '/favicon.svg' },
@@ -40,7 +42,12 @@ export default defineNuxtConfig({
 
   css: ['~/assets/css/main.css'],
 
-  site: { url: 'https://justfuckingusenuxt.com' },
+  site: {
+    url: site.url,
+    name: site.name,
+    description: site.description,
+    defaultLocale: site.language,
+  },
 
   colorMode: {
     preference: 'dark',
@@ -90,6 +97,11 @@ export default defineNuxtConfig({
     defaults: {
       subsets: ['latin'],
     },
+  },
+
+  // Only the homepage is a public document; content API routes are not pages.
+  sitemap: {
+    exclude: ['/api/**'],
   },
 
 })
