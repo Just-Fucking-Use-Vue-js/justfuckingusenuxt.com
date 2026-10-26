@@ -90,7 +90,7 @@ conventions:
   - from: Choose a pattern for server data
     to: Use an SSR-aware composable
     example: useFetch('/api/products')
-  - from: Create and connect a separate API project
+  - from: Connect a separate API project
     to: Add a server handler
     example: server/api/orders.post.ts
   - from: Stitch together SEO tooling
