@@ -1,74 +1,40 @@
 <script lang="ts" setup>
 import { site } from '#shared/site'
 
-const imageUrl = new URL(site.image.path, site.url).href
-
 useSeoMeta({
+  // The homepage title is the site name; skip the "%s | %siteName" template.
   title: site.name,
+  titleTemplate: '%s',
   description: site.description,
-  ogTitle: site.name,
-  ogDescription: site.description,
-  ogType: 'website',
-  ogUrl: site.url,
-  ogSiteName: site.name,
   ogLocale: site.locale,
-  ogImage: imageUrl,
-  ogImageAlt: site.image.alt,
-  ogImageWidth: site.image.width,
-  ogImageHeight: site.image.height,
-  ogImageType: site.image.type,
-  twitterTitle: site.name,
-  twitterDescription: site.description,
-  twitterImage: imageUrl,
-  twitterImageAlt: site.image.alt,
+  ogImage: {
+    url: site.image.path,
+    alt: site.image.alt,
+    width: site.image.width,
+    height: site.image.height,
+    type: site.image.type,
+  },
   twitterCard: 'summary_large_image',
 })
 
 useHead({
-  link: [
-    { rel: 'canonical', href: site.url },
-  ],
   meta: [
     { name: 'theme-color', content: '#0A0A0A', media: '(prefers-color-scheme: dark)' },
     { name: 'theme-color', content: '#FFFFFF', media: '(prefers-color-scheme: light)' },
   ],
-  script: [
-    {
-      type: 'application/ld+json',
-      innerHTML: JSON.stringify({
-        '@context': 'https://schema.org',
-        '@graph': [
-          {
-            '@type': 'WebSite',
-            '@id': `${site.url}#website`,
-            'name': site.name,
-            'url': site.url,
-            'description': site.description,
-            'inLanguage': site.language,
-          },
-          {
-            '@type': 'WebPage',
-            '@id': `${site.url}#webpage`,
-            'url': site.url,
-            'name': site.name,
-            'description': site.description,
-            'inLanguage': site.language,
-            'isPartOf': { '@id': `${site.url}#website` },
-            'about': { '@type': 'Thing', 'name': 'Nuxt', 'url': 'https://nuxt.com/' },
-            'primaryImageOfPage': {
-              '@type': 'ImageObject',
-              'url': imageUrl,
-              'contentUrl': imageUrl,
-              'width': site.image.width,
-              'height': site.image.height,
-              'caption': site.image.alt,
-            },
-          },
-        ],
-      }),
-    },
-  ],
 })
+
+useSchemaOrg([
+  defineWebPage({
+    about: { '@type': 'Thing', 'name': 'Nuxt', 'url': 'https://nuxt.com/' },
+    primaryImageOfPage: {
+      url: site.image.path,
+      width: site.image.width,
+      height: site.image.height,
+      caption: site.image.alt,
+    },
+  }),
+])
 
 const { data: page } = await useAsyncData('/', () => queryCollection('content').path('/').first())
 
