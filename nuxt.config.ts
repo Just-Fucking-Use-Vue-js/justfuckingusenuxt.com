@@ -5,8 +5,7 @@ export default defineNuxtConfig({
     '@nuxt/eslint',
     '@nuxt/ui',
     '@nuxt/content',
-    '@nuxtjs/sitemap',
-    '@nuxtjs/robots',
+    '@nuxtjs/seo',
   ],
 
   $production: {
@@ -99,9 +98,19 @@ export default defineNuxtConfig({
     },
   },
 
+  // The social card is the hand-made public/og.png, set in app.vue.
+  ogImage: {
+    enabled: false,
+  },
+
   // Only the homepage is a public document; content API routes are not pages.
   sitemap: {
     exclude: ['/api/**'],
+  },
+
+  // A static site has no server to keep old builds' assets around.
+  skewProtection: {
+    enabled: false,
   },
 
 })
