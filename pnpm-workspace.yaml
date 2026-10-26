@@ -4,5 +4,6 @@ allowBuilds:
   esbuild: false
   unrs-resolver: false
   vue-demi: false
+  workerd: false
 minimumReleaseAgeExclude:
   - '@iconify-json/lucide@1.2.147'

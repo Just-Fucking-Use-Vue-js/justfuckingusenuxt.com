@@ -1,12 +1,15 @@
 {
   "$schema": "https://unpkg.com/wrangler@latest/config-schema.json",
   "name": "justfuckingusenuxt-com",
-  "preview_urls": true,
-  "workers_dev": true,
-  "observability": {
-    "enabled": true
-  },
-  "compatibility_date": "2025-10-24",
+  "preview_urls": false,
+  "workers_dev": false,
+  "routes": [
+    {
+      "pattern": "justfuckingusenuxt.com",
+      "custom_domain": true
+    }
+  ],
+  "compatibility_date": "2026-10-26",
   "assets": {
     "directory": "./.output/public"
   },
