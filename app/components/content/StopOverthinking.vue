@@ -27,14 +27,8 @@ defineSlots<{
       </template>
 
       <template #links>
-        <p class="w-full text-center font-heading text-2xl text-highlighted sm:text-3xl">
-          <slot
-            mdc-unwrap="p"
-            name="default"
-          />
-        </p>
         <UButton
-          label="Get Started"
+          label="Just fucking use Nuxt"
           size="xl"
           trailing-icon="i-lucide-arrow-right"
           to="https://nuxt.com/docs/4.x/getting-started/installation?utm_source=justfuckingusenuxt.com&utm_medium=referral&utm_campaign=closing-cta"

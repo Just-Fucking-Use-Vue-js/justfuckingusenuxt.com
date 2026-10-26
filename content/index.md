@@ -367,7 +367,4 @@ Stop configuring. Start shipping.
 
 #description
 Nuxt isn’t perfect. Nothing is. But it gives you routing, rendering, server endpoints, data fetching, SEO, and deployment in one coherent codebase. Stop stitching the foundation together before you can ship the product.
-
-#default
-Just fucking use Nuxt.
 ::
